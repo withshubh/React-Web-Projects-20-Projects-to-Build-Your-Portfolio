@@ -43,6 +43,7 @@ function QuoteContainer() {
 
   function generateNewQuoteHandler() {
     const { text, author } = shuffleArrayIndex(quoteData?.quote);
+
     setTextQuote(text);
     setAuthorQuote(author);
   }
