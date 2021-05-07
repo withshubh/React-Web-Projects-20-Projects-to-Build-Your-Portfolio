@@ -5,7 +5,9 @@ import QuoteAuthor from '../Quote/QuoteAuthor';
 import QuteButton from '../Button/QuoteButton';
 import SpinnerLoader from '../Animation/SpinnerLoader';
 
-import './QuoteContainer.scss';
+import classes from './QuoteContainer.module.scss';
+
+const { main, 'main-container': mainContainer } = classes;
 
 function QuoteContainer() {
   const [isActive, setIsActive] = useState(true);
@@ -38,12 +40,18 @@ function QuoteContainer() {
     return setIsActive(false);
   }, []);
 
+  function generateNewQuoteHandler() {
+    const { text, author } = shuffleArrayIndex(quoteData?.quote);
+    setTextQuote(text);
+    setAuthorQuote(author);
+  }
+
   return (
-    <main className='main'>
-      <section className='main-container'>
+    <main className={main}>
+      <section className={mainContainer}>
         <QuoteText quote={textQuote} />
         <QuoteAuthor author={authorQuote} />
-        <QuteButton />
+        <QuteButton clickHandler={generateNewQuoteHandler} />
       </section>
       {/* <SpinnerLoader /> */}
     </main>
