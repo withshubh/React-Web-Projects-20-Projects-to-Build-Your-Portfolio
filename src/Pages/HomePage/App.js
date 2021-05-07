@@ -1,6 +1,6 @@
 import { Switch, BrowserRouter as Router, Route } from 'react-router-dom';
 
-import QuoteContainer from '../QuoteGenerator/Container/QuoteContainer';
+import QuoteContainer from '../QuoteGenerator/Components/Container/QuoteContainer';
 import LinkToProjects from './LinkToProjects';
 
 import './App.css';

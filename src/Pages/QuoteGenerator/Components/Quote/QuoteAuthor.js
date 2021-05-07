@@ -1,9 +1,9 @@
 import './QuoteAuthor.scss';
 
-function QuoteAuthor() {
+function QuoteAuthor({ author }) {
   return (
     <div className='quote-container__author'>
-      <span id='author'>Buddha</span>
+      <span id='author'>{author}</span>
     </div>
   );
 }
