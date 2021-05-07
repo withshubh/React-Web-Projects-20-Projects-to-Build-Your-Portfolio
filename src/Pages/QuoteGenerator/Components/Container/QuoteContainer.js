@@ -10,6 +10,7 @@ import classes from './QuoteContainer.module.scss';
 const { main, 'main-container': mainContainer } = classes;
 
 function QuoteContainer() {
+  let loadSpinner;
   const [isActive, setIsActive] = useState(true);
   const [quoteData, setQuoteData] = useState([]);
   const [textQuote, setTextQuote] = useState('');
@@ -36,7 +37,7 @@ function QuoteContainer() {
       })
       .catch((err) => console.log(err));
 
-    // Cancenling the fetch by aborting it.
+    // Cancenling/cleaning up the fetch when it's finished to fetch
     return setIsActive(false);
   }, []);
 
@@ -46,14 +47,17 @@ function QuoteContainer() {
     setAuthorQuote(author);
   }
 
+  if (isActive) {
+    loadSpinner = <SpinnerLoader />;
+  }
   return (
     <main className={main}>
       <section className={mainContainer}>
         <QuoteText quote={textQuote} />
         <QuoteAuthor author={authorQuote} />
         <QuteButton clickHandler={generateNewQuoteHandler} />
+        {loadSpinner}
       </section>
-      {/* <SpinnerLoader /> */}
     </main>
   );
 }
