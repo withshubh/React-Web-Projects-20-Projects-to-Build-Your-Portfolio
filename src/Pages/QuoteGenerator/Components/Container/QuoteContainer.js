@@ -54,9 +54,13 @@ function QuoteContainer() {
   return (
     <main className={main}>
       <section className={mainContainer}>
-        <QuoteText quote={textQuote} />
-        <QuoteAuthor author={authorQuote} />
-        <QuteButton clickHandler={generateNewQuoteHandler} />
+        <QuoteText textQuote={textQuote} />
+        <QuoteAuthor authorQuote={authorQuote} />
+        <QuteButton
+          clickHandler={generateNewQuoteHandler}
+          textQuote={textQuote}
+          authorQuote={authorQuote}
+        />
         {loadSpinner}
       </section>
     </main>
