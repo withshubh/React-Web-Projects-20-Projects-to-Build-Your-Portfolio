@@ -35,7 +35,7 @@ function QuoteContainer() {
           setAuthorQuote(author);
         }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.error(err));
 
     // Cancenling/cleaning up the fetch when it's finished to fetch
     return setIsActive(false);

@@ -1,0 +1,16 @@
+@import '../../../../scss/main.scss';
+
+.image-container {
+  margin: 10px 30%;
+
+  @include max-width-mq('large') {
+    margin: 10px;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    margin-top: 5px;
+  }
+}
