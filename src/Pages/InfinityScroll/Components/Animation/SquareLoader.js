@@ -4,7 +4,7 @@ import classes from './SquareLoader.module.scss';
 function SquareLoader() {
   const { 'main-container__loader': MainContainerLoader } = classes;
   return (
-    <div class={MainContainerLoader} id='infinity-loader' hidden>
+    <div className={MainContainerLoader} id='infinity-loader' hidden>
       <img src={svgLoader} alt='Infinity Loading' />
     </div>
   );

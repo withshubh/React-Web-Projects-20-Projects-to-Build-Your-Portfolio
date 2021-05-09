@@ -1,8 +1,6 @@
-import { useState } from 'react';
-
 import classes from './ImageLoader.module.scss';
 
-function ImageLoader({ ...photo }) {
+function ImageLoader({ initialLoading, ...photo }) {
   const { 'image-container': imageContainer } = classes;
 
   const {
@@ -12,7 +10,7 @@ function ImageLoader({ ...photo }) {
   } = photo;
 
   return (
-    <div class={imageContainer} id='image-container'>
+    <div className={imageContainer} id='image-container'>
       <a href={photoUrl} target='_blank' rel='noreferrer'>
         <img src={photoSrc} alt={photoDescription} title={photoDescription} />
       </a>
