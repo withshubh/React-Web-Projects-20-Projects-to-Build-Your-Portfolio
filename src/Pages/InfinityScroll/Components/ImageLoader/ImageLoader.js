@@ -1,6 +1,6 @@
 import classes from './ImageLoader.module.scss';
 
-function ImageLoader({ initialLoading, ...photo }) {
+function ImageLoader({ loadImageHandler, initialLoading, ...photo }) {
   const { 'image-container': imageContainer } = classes;
 
   const {
@@ -12,7 +12,12 @@ function ImageLoader({ initialLoading, ...photo }) {
   return (
     <div className={imageContainer} id='image-container'>
       <a href={photoUrl} target='_blank' rel='noreferrer'>
-        <img src={photoSrc} alt={photoDescription} title={photoDescription} />
+        <img
+          src={photoSrc}
+          alt={photoDescription}
+          title={photoDescription}
+          onLoad={loadImageHandler}
+        />
       </a>
     </div>
   );

@@ -6,6 +6,14 @@ import ImageLoader from './Components/ImageLoader/ImageLoader';
 import classes from './InfinityScrollApp.module.scss';
 
 function InfinityScrollApp() {
+  const apiKey = 'azDEgfUl7cGcx8ALUFh1hFLFbAvQ8IGwnR29V5lpfXM';
+  let unsplashApi = '';
+
+  // initial Image that is starting to load
+  let imagesLoaded = 0;
+  // Track of the total iamges so we know when it's done loading everything
+  let totalImages = 0;
+
   const [photoData, setPhotoData] = useState([]);
   const [photoContent, setPhotoContent] = useState([]);
   const [initialCount, setinitialCount] = useState(10);
@@ -13,8 +21,7 @@ function InfinityScrollApp() {
   const { 'main-container': mainContainer } = classes;
 
   useEffect(() => {
-    const apiKey = 'azDEgfUl7cGcx8ALUFh1hFLFbAvQ8IGwnR29V5lpfXM';
-    let unsplashApi = `https://api.unsplash.com/photos/random/?client_id=${apiKey}&count=${initialCount}`;
+    unsplashApi = `https://api.unsplash.com/photos/random/?client_id=${apiKey}&count=${initialCount}`;
 
     fetch(unsplashApi)
       .then((res) => res.json())
@@ -25,20 +32,42 @@ function InfinityScrollApp() {
     return setInitialLoading(false);
   }, []);
 
-  if (initialLoading === false) {
-    photoData.map((photo) => {
-      return <ImageLoader key={photo.id} initialLoading={initialLoading} {...photo} />;
-    });
+  function updateAPIURLWithNewCount(picCount) {
+    return `https://api.unsplash.com/photos/random?client_id=${apiKey}&count=${picCount}`;
   }
 
-  function generatePhotoHandler() {
-    const photoItem = photoData.map((photo) => (
-      <ImageLoader key={photo.id} initialLoading={initialLoading} {...photo} />
-    ));
+  async function generateNewPhotos() {
+    imagesLoaded = 0;
+    try {
+      const response = await fetch(updateAPIURLWithNewCount(30));
+      const photoData = response.json();
 
-    setPhotoContent((prevPhoto) => {
-      return [...prevPhoto, photoItem];
-    });
+      photoData.then((photos) => {
+        const photoItem = photos.map((photo) => (
+          <ImageLoader
+            key={photo.id}
+            initialLoading={initialLoading}
+            {...photo}
+            loadImageHandler={loadImageHandler}
+          />
+        ));
+
+        setPhotoContent((prevPhoto) => {
+          return [...prevPhoto, photoItem];
+        });
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  function loadImageHandler() {
+    imagesLoaded++;
+
+    if (imagesLoaded === totalImages) {
+      setInitialLoading(false);
+      // loader.hidden = true;
+    }
   }
 
   window.addEventListener('scroll', () => {
@@ -46,7 +75,8 @@ function InfinityScrollApp() {
     const fullHeightImage = document.body.offsetHeight - 1000;
 
     if (windowHeight >= fullHeightImage) {
-      generatePhotoHandler();
+      setInitialLoading(true);
+      generateNewPhotos();
     }
   });
 
@@ -58,7 +88,7 @@ function InfinityScrollApp() {
         return <ImageLoader key={photo.id} initialLoading={initialLoading} {...photo} />;
       })}
       {photoContent}
-      {/* <button onClick={generatePhotoHandler}>ny bilde</button> */}
+      {/* <button onClick={generateNewPhotos}>ny bilde</button> */}
     </main>
   );
 }
