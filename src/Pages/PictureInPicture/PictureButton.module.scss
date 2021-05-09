@@ -1,0 +1,34 @@
+@import './../../scss/main.scss';
+
+.picture-body__button-container {
+  border: 2px solid $clr-black-900;
+  padding: 10px;
+  border-radius: 7px;
+  box-shadow: inset 0 1.25rem 4px -19px rgba(255, 255, 255, 0.7); // Shadow is going to be inside of the object rather than the outside
+
+  button {
+    cursor: pointer;
+    outline: none;
+    width: 7.5em;
+    height: 4.6875em;
+    font-family: Barlow, sans-serif;
+    font-weight: bold;
+    font-size: 1.5625rem;
+    color: $clr-white-100;
+    text-shadow: 0 2px 5px $clr-black-900;
+    background: linear-gradient(to top, #696969, #575757);
+    border: 2px solid $clr-black-900;
+    border-radius: 7px;
+    // Styling both the inside and outside of the box shadow
+    box-shadow: inset 0 1.25rem 4px -19px rgba(255, 255, 255, 0.4), 0 12px 12px 0 rgba(0, 0, 0, 0.3);
+  }
+
+  button:hover {
+    background: linear-gradient(to bottom, $clr-grey-400, $clr-grey-500);
+  }
+
+  button:active {
+    transform: translateY(3px);
+    box-shadow: 0 6px 6px 0 rgba(0, 0, 0, 0.3);
+  }
+}
