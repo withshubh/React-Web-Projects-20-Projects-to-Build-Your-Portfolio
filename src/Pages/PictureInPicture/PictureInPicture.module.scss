@@ -1,0 +1,8 @@
+@import './../../scss/main.scss';
+
+.picture-body {
+  display: flex;
+  height: 100vh;
+  @include flex-align-center;
+  background: rgb(37, 37, 37);
+}

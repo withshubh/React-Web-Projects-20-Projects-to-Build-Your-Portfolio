@@ -1,7 +1,8 @@
 import { Switch, BrowserRouter as Router, Route } from 'react-router-dom';
 
-import QuoteContainer from '../QuoteGenerator/Components/Container/QuoteContainer';
 import InfinityScroll from '../InfinityScroll/InfinityScrollApp';
+import PictureInPicture from '../PictureInPicture/PictureinPictureApp';
+import QuoteContainer from '../QuoteGenerator/Components/Container/QuoteContainer';
 import LinkToProjects from './LinkToProjects';
 
 import './App.css';
@@ -14,6 +15,7 @@ function App() {
         <Switch>
           <Route path='/quote-generator' component={QuoteContainer} />
           <Route path='/infinity-scroll' component={InfinityScroll} />
+          <Route path='/picture-in-picture' component={PictureInPicture} />
         </Switch>
       </div>
     </Router>
