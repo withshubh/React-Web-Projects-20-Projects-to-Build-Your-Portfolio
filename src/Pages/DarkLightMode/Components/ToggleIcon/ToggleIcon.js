@@ -1,15 +1,20 @@
 import './ToggleIcon.scss';
 
-function ToggleIcon() {
+function ToggleIcon({ switchThemeHandler, isDarkMode, ...darkModeObject }) {
+  const {
+    textContent: { darkMode, lightMode },
+    className: { sun, moon },
+  } = darkModeObject;
+
   return (
-    <div class='theme-switch-wrapper'>
+    <div className='theme-switch-wrapper'>
       <span id='toggle-icon'>
-        <span class='toggle-text'>Light Mode</span>
-        <i class='fas fa-sun'></i>
+        <span className='toggle-text'>{isDarkMode ? darkMode : lightMode}</span>
+        <i className={isDarkMode ? moon : sun}></i>
       </span>
-      <label class='theme-switch'>
-        <input type='checkbox' id='toggle-dark-light-mode' />
-        <div class='slider round'></div>
+      <label className='theme-switch'>
+        <input type='checkbox' onClick={switchThemeHandler} />
+        <div className='slider round'></div>
       </label>
     </div>
   );

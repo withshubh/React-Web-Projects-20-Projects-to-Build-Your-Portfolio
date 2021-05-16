@@ -1,22 +1,24 @@
 import './Project.scss';
 
-function ProjectsSection() {
+function ProjectsSection({ isDarkMode, ...darkModeObject }) {
+  const { lightText, darkText } = darkModeObject.textBoxBackgroundColor;
+
   return (
-    <section class='dark-light-body__projects' id='projects'>
+    <section className='dark-light-body__projects' id='projects'>
       <h1>Buttons</h1>
-      <div class='buttons'>
-        <button class='primary'>Primary</button>
-        <button class='secondary'>Secondary</button>
-        <button class='primary' disabled>
+      <div className='buttons'>
+        <button className='primary'>Primary</button>
+        <button className='secondary'>Secondary</button>
+        <button className='primary' disabled>
           Disabled
         </button>
-        <button class='outline'>Outline</button>
-        <button class='secondary outline'>Alt Outline</button>
-        <button class='outline' disabled>
+        <button className='outline'>Outline</button>
+        <button className='secondary outline'>Alt Outline</button>
+        <button className='outline' disabled>
           Disabled
         </button>
       </div>
-      <div class='text-box' id='text-box'>
+      <div className='text-box' style={{ backgroundColor: isDarkMode ? lightText : darkText }}>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt architecto ducimus cum
           dolore laborum beatae rerum aliquam possimus earum sunt? Numquam possimus veritatis
