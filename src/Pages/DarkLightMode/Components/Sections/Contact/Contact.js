@@ -2,14 +2,14 @@ import './Contact.scss';
 
 function ContactSection() {
   return (
-    <section class='dark-light-body__contacts' id='contact'>
-      <div class='social-icons'>
-        <i class='fab fa-github'></i>
-        <i class='fab fa-codepen'></i>
-        <i class='fab fa-linkedin-in'></i>
-        <i class='fab fa-medium'></i>
-        <i class='fab fa-instagram'></i>
-        <i class='fab fa-youtube'></i>
+    <section className='dark-light-body__contacts' id='contact'>
+      <div className='social-icons'>
+        <i className='fab fa-github'></i>
+        <i className='fab fa-codepen'></i>
+        <i className='fab fa-linkedin-in'></i>
+        <i className='fab fa-medium'></i>
+        <i className='fab fa-instagram'></i>
+        <i className='fab fa-youtube'></i>
       </div>
     </section>
   );
