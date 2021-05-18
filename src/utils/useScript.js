@@ -74,7 +74,7 @@ function useCSSLink(src) {
       if (!link) {
         // Create link
         link = document.createElement('link');
-        link.setAttribute('src', src);
+        link.setAttribute('href', src);
         link.rel = 'stylesheet';
         link.setAttribute('data-status', 'loading');
         // Add link to document body
