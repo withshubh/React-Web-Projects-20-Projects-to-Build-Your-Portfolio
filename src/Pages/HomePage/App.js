@@ -1,4 +1,5 @@
 import { Switch, BrowserRouter as Router, Route } from 'react-router-dom';
+import AnimatedTemplate from '../AnimatedTemplate/AnimatedTemplate';
 import DarkLightMode from '../DarkLightMode/DarkLightMode';
 import InfinityScroll from '../InfinityScroll/InfinityScrollApp';
 import PictureInPicture from '../PictureInPicture/PictureinPictureApp';
@@ -14,6 +15,7 @@ function App() {
       <div className='App'>
         <LinkToProjects />
         <Switch>
+          <Route path='/animated-template' component={AnimatedTemplate} />
           <Route path='/dark-light-mode' component={DarkLightMode} />
           <Route path='/quote-generator' component={QuoteContainer} />
           <Route path='/infinity-scroll' component={InfinityScroll} />

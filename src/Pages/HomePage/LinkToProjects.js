@@ -8,6 +8,7 @@ function LinkToProjects() {
   if (pathname === '/') {
     link = (
       <>
+        <Link to='/animated-template'>Animated Template</Link>
         <Link to='/dark-light-mode'>Dark & Light Mode</Link>
         <Link to='/quote-generator'>Quote Generator</Link>
         <Link to='/infinity-scroll'>Infinity Scroll</Link>
