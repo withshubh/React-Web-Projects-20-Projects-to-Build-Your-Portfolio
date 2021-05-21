@@ -1,8 +1,11 @@
+import { forwardRef } from 'react';
+
 import './MenuOverlay.scss';
 
-function MenuOverlay() {
+function MenuOverlay({ toggleClass }) {
+  toggleClass = 'overlay-active';
   return (
-    <div className='navigation-nation-overlay overlay-slide-left' id='overlay'>
+    <div className={`navigation-nation-overlay overlay-slide-left ${toggleClass}`}>
       <nav>
         <ul>
           <li className='slide-out-1' id='nav-1'>
@@ -26,4 +29,4 @@ function MenuOverlay() {
   );
 }
 
-export default MenuOverlay;
+export default forwardRef(MenuOverlay);
